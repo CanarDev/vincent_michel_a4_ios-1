@@ -70,11 +70,6 @@ struct ContentView: View {
         
         print("hello")
         
-        let musicPlayer = MPMusicPlayerController.systemMusicPlayer
-        let nowPlayingItem = musicPlayer.nowPlayingItem
-    
-        
-        
         //if let nowPlayingInfo = MPNowPlayingInfoCenter.default().nowPlayingInfo,
         //   let title = nowPlayingInfo[MPMediaItemPropertyTitle] as? String,
         //   let artist = nowPlayingInfo[MPMediaItemPropertyArtist] as? String,
