@@ -11,6 +11,9 @@
 		8892EBC92B0B6BF500AA925B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8892EBC82B0B6BF500AA925B /* ContentView.swift */; };
 		8892EBCB2B0B6BF700AA925B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8892EBCA2B0B6BF700AA925B /* Assets.xcassets */; };
 		8892EBCE2B0B6BF700AA925B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8892EBCD2B0B6BF700AA925B /* Preview Assets.xcassets */; };
+		88A11D1A2B0CB0DC00670B80 /* TrackListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A11D192B0CB0DC00670B80 /* TrackListView.swift */; };
+		88A11D1C2B0CB17F00670B80 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A11D1B2B0CB17F00670B80 /* TabBar.swift */; };
+		88C080432B0CAF3F002DD611 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C080422B0CAF3F002DD611 /* Track.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,9 @@
 		8892EBC82B0B6BF500AA925B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8892EBCA2B0B6BF700AA925B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8892EBCD2B0B6BF700AA925B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		88A11D192B0CB0DC00670B80 /* TrackListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListView.swift; sourceTree = "<group>"; };
+		88A11D1B2B0CB17F00670B80 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		88C080422B0CAF3F002DD611 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +58,10 @@
 			isa = PBXGroup;
 			children = (
 				8892EBC62B0B6BF500AA925B /* CanarDev_ProjectApp.swift */,
+				88A11D1B2B0CB17F00670B80 /* TabBar.swift */,
 				8892EBC82B0B6BF500AA925B /* ContentView.swift */,
+				88A11D192B0CB0DC00670B80 /* TrackListView.swift */,
+				88C080422B0CAF3F002DD611 /* Track.swift */,
 				8892EBCA2B0B6BF700AA925B /* Assets.xcassets */,
 				8892EBCC2B0B6BF700AA925B /* Preview Content */,
 			);
@@ -139,6 +148,9 @@
 			files = (
 				8892EBC92B0B6BF500AA925B /* ContentView.swift in Sources */,
 				8892EBC72B0B6BF500AA925B /* CanarDev_ProjectApp.swift in Sources */,
+				88A11D1A2B0CB0DC00670B80 /* TrackListView.swift in Sources */,
+				88C080432B0CAF3F002DD611 /* Track.swift in Sources */,
+				88A11D1C2B0CB17F00670B80 /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +287,7 @@
 				DEVELOPMENT_TEAM = XAHQ9J8YJL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Cette application utilise les informations sur la piste audio en cours de lecture à des fins de personnalisation de l'expérience utilisateur.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -304,6 +317,7 @@
 				DEVELOPMENT_TEAM = XAHQ9J8YJL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Cette application utilise les informations sur la piste audio en cours de lecture à des fins de personnalisation de l'expérience utilisateur.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

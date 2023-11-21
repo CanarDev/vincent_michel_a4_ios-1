@@ -10,28 +10,21 @@ import SwiftUI
 import MusicKit
 import MediaPlayer
 
-// Modèle pour simuler une musique en cours de lecture
-struct Music {
-    let title: String
-    let artist: String
-    let image: String
-}
-
 struct ContentView: View {
-    @State private var isPlayingMusic: Bool = false
-    @State private var currentMusic: Music? = Music(title: "Titre de la musique", artist: "Artiste", image: "blank")
-    @State private var newMusic: Music?
+    @State private var currentTrack: Track?
+    @State private var newTrack: Track?
+    
+    @State private var nowPlayingItem: MPMediaItem?
     
     var body: some View {
         VStack {
-            if let music = currentMusic {
-                AsyncImage(url: URL(string: music.image)) {
-                   Image in Image.image?.resizable()
-               }
-               .frame(width: 300, height: 300)
-               .cornerRadius(12)
-               .shadow(radius: 10)
-               .aspectRatio(contentMode: .fit)
+            if let music = currentTrack {
+                Image(uiImage: music.artwork)
+                    .resizable()
+                    .frame(width: 300, height: 300)
+                    .cornerRadius(12)
+                    .shadow(radius: 10)
+                    .aspectRatio(contentMode: .fit)
             
                            
                 Text(music.title)
@@ -43,9 +36,9 @@ struct ContentView: View {
                     .foregroundColor(.gray)
                 
                 Button(action: {
-                    newMusic = currentMusic
+                    newTrack = currentTrack
                 }, label: {
-                    Text("ShareLink")
+                    Text("Generate platform links")
                         .padding()
                         .background(Color.blue)
                         .foregroundColor(.white)
@@ -59,23 +52,34 @@ struct ContentView: View {
         }
         .padding()
         .onAppear {
-            playMusic()
+            let _ = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { _ in
+                getCurrentTrack()
+            }
+        }
+    }
+        
+    func getCurrentTrack() {
+        let musicPlayer = MPMusicPlayerController.systemMusicPlayer
+        guard let fetchedTitle : String = musicPlayer.nowPlayingItem?.title else {
+            print("Titre")
+            return
+        }
+        guard let fetchedArtist : String = musicPlayer.nowPlayingItem?.artist else {
+            print("Artiste")
+            return
+        }
+        guard let fetchedArtwork =  convertArtworkToImage(artwork: (musicPlayer.nowPlayingItem?.artwork)!) else {
+            print("Artwork")
+            return
         }
         
         
+        currentTrack = Track(title: fetchedTitle, artist: fetchedArtist, artwork: fetchedArtwork)
+        
     }
     
-    func playMusic() {
-        currentMusic = Music(title: "Chlorine", artist: "Twenty One Pilots", image: "https://m.media-amazon.com/images/I/81znz4j2UTL._UF894,1000_QL80_.jpg")
-        
-        print("hello")
-        
-        //if let nowPlayingInfo = MPNowPlayingInfoCenter.default().nowPlayingInfo,
-        //   let title = nowPlayingInfo[MPMediaItemPropertyTitle] as? String,
-        //   let artist = nowPlayingInfo[MPMediaItemPropertyArtist] as? String,
-        //}
-
-        
+    func convertArtworkToImage(artwork: MPMediaItemArtwork) -> UIImage? {
+        return artwork.image(at: CGSize(width: 200, height: 200))
     }
 }
 
