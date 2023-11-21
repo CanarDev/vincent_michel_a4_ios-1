@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		880063722B0CE2730017682C /* MusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880063712B0CE2730017682C /* MusicManager.swift */; };
+		880063742B0D07F60017682C /* CurrentTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880063732B0D07F60017682C /* CurrentTrackView.swift */; };
 		8892EBC72B0B6BF500AA925B /* CanarDev_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8892EBC62B0B6BF500AA925B /* CanarDev_ProjectApp.swift */; };
 		8892EBC92B0B6BF500AA925B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8892EBC82B0B6BF500AA925B /* ContentView.swift */; };
 		8892EBCB2B0B6BF700AA925B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8892EBCA2B0B6BF700AA925B /* Assets.xcassets */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		880063712B0CE2730017682C /* MusicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicManager.swift; sourceTree = "<group>"; };
+		880063732B0D07F60017682C /* CurrentTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTrackView.swift; sourceTree = "<group>"; };
 		8892EBC32B0B6BF500AA925B /* CanarDev Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CanarDev Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8892EBC62B0B6BF500AA925B /* CanarDev_ProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanarDev_ProjectApp.swift; sourceTree = "<group>"; };
 		8892EBC82B0B6BF500AA925B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,9 +65,11 @@
 				88A11D1B2B0CB17F00670B80 /* TabBar.swift */,
 				8892EBC82B0B6BF500AA925B /* ContentView.swift */,
 				88A11D192B0CB0DC00670B80 /* TrackListView.swift */,
+				880063732B0D07F60017682C /* CurrentTrackView.swift */,
 				88C080422B0CAF3F002DD611 /* Track.swift */,
 				8892EBCA2B0B6BF700AA925B /* Assets.xcassets */,
 				8892EBCC2B0B6BF700AA925B /* Preview Content */,
+				880063712B0CE2730017682C /* MusicManager.swift */,
 			);
 			path = "CanarDev Project";
 			sourceTree = "<group>";
@@ -150,7 +156,9 @@
 				8892EBC72B0B6BF500AA925B /* CanarDev_ProjectApp.swift in Sources */,
 				88A11D1A2B0CB0DC00670B80 /* TrackListView.swift in Sources */,
 				88C080432B0CAF3F002DD611 /* Track.swift in Sources */,
+				880063742B0D07F60017682C /* CurrentTrackView.swift in Sources */,
 				88A11D1C2B0CB17F00670B80 /* TabBar.swift in Sources */,
+				880063722B0CE2730017682C /* MusicManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
