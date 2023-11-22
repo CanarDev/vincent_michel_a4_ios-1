@@ -12,4 +12,12 @@ struct Track {
     let title: String
     let artist: String
     let artwork: UIImage
+    // let url: URL
+}
+
+struct SaveTrack : Identifiable {
+    let id: UUID = UUID()
+    let title: String
+    let artist: String
+    let artwork: URL
 }

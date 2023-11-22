@@ -11,10 +11,10 @@ import MusicKit
 import MediaPlayer
 
 struct ContentView: View {
+    @StateObject var musicManager = MusicManager()
     
-
     var body: some View {
-        TabBar()
+        TabBar(musicManager: musicManager)
     }
 }
 

@@ -9,13 +9,22 @@ import Foundation
 import SwiftUI
 
 struct TrackListView: View {
-    let tracks: [Track] = MusicManager().retrieveSavedTrack()
-
+    @EnvironmentObject var musicManager: MusicManager
+    
     var body: some View {
+        
         NavigationView {
-            List(tracks) { track in
-                NavigationLink(destination: TrackDetailView(track: track)) {
-                    TrackRowView(track: track)
+            List(musicManager.tracks) { track in
+                NavigationLink(destination: TrackDetailView(track: track, musicManager: musicManager)) {
+                    TrackRowView(track: track, musicManager: musicManager)
+                }
+                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                    Button {
+                        musicManager.removeTrack(withID: track.id)
+                    } label: {
+                        Image(systemName: "trash")
+                    }
+                    .tint(.red)
                 }
             }
             .navigationBarTitle("Enregistrés")
@@ -24,15 +33,17 @@ struct TrackListView: View {
 }
 
 struct TrackRowView: View {
-    let track: Track
+    let track: SaveTrack
+    let musicManager: MusicManager
 
     var body: some View {
         HStack {
             // Afficher l'artwork de la chanson
-            Image(systemName: "music.note")
+            Image(uiImage: musicManager.loadImage(from: track.artwork)!)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 50, height: 50)
+                .cornerRadius(5)
             
             // Afficher le titre et l'artiste de la chanson
             VStack(alignment: .leading) {
@@ -47,24 +58,25 @@ struct TrackRowView: View {
 }
 
 struct TrackDetailView: View {
-    let track: Track
+    let track: SaveTrack
+    let musicManager: MusicManager
 
     var body: some View {
         VStack {
-            // Afficher l'artwork de la chanson
-            Image(systemName: "music.note")
+            Image(uiImage: musicManager.loadImage(from: track.artwork)!)
                 .resizable()
-                .scaledToFit()
-                .frame(maxWidth: .infinity, maxHeight: 300)
+                .frame(width: 300, height: 300)
+                .cornerRadius(12)
+                .shadow(radius: 10)
+                .aspectRatio(contentMode: .fit)
 
             Text(track.title)
                 .font(.title)
-                .padding()
+                .fontWeight(.bold)
             
             Text(track.artist)
-                .font(.headline)
-                .foregroundColor(.secondary)
-                .padding()
+                .font(.subheadline)
+                .foregroundColor(.gray)
             
             // Autres détails de la chanson à afficher ici
         }
@@ -75,6 +87,6 @@ struct TrackDetailView: View {
 
 struct TrackListView_Previews: PreviewProvider {
     static var previews: some View {
-        TrackListView()
+        TrackListView().environmentObject(MusicManager())
     }
 }

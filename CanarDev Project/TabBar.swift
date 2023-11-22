@@ -9,17 +9,17 @@ import Foundation
 import SwiftUI
 
 struct TabBar: View {
+    let musicManager: MusicManager
+    
     var body: some View {
         TabView {
-            CurrentTrackView()
-                .badge(2)
+            CurrentTrackView().environmentObject(musicManager)
                 .tabItem {
-                    Label("Received", systemImage: "tray.and.arrow.down.fill")
+                    Label("En cours", systemImage: "music.note")
                 }
-            TrackListView()
-                .badge("!")
+            TrackListView().environmentObject(musicManager)
                 .tabItem {
-                    Label("Account", systemImage: "person.crop.circle.fill")
+                    Label("Enregistrés", systemImage: "music.note.list")
                 }
         }
     }
