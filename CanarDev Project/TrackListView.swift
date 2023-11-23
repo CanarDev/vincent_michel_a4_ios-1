@@ -78,9 +78,17 @@ struct TrackDetailView: View {
                 .font(.subheadline)
                 .foregroundColor(.gray)
             
-            // Autres détails de la chanson à afficher ici
+            Text("Tableau : ")
+            ForEach(track.links.indices) { index in
+                Text("Ligne \(index)")
+                Text(track.links[index].keys.joined(separator: ", "))
+                
+            }
         }
         .navigationBarTitle(track.title)
+        .onAppear {
+            print(track.links.count)
+        }
     }
 }
 

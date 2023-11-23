@@ -20,4 +20,10 @@ struct SaveTrack : Identifiable {
     let title: String
     let artist: String
     let artwork: URL
+    var links: [[String: Any]] = []
+    
+    mutating func addLink(link: [String: Any]) {
+        links.append(link)
+    }
 }
+
