@@ -56,7 +56,10 @@ struct CurrentTrackView: View {
         }
         .padding()
         .onAppear {
-            let _ = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { _ in
+            getCurrentTrack()
+        }
+        .onReceive(musicManager.$isSongChanged) { changed in
+            if changed {
                 getCurrentTrack()
             }
         }

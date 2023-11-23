@@ -30,8 +30,8 @@
             filePath = "CanarDev Project/MusicManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "saveTrack(currentTrack:)"
             landmarkType = "7">
             <Locations>
@@ -64,69 +64,6 @@
                   startingLineNumber = "18"
                   endingLineNumber = "18"
                   offsetFromSymbolStart = "256">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "67B25770-9F9A-4798-A84A-17B9E2068F00"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CanarDev Project/MusicManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "saveTrack(currentTrack:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "67B25770-9F9A-4798-A84A-17B9E2068F00 - b5369074dd33bc09"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CanarDev_Project.MusicManager.saveTrack(currentTrack: CanarDev_Project.Track) -&gt; ()"
-                  moduleName = "CanarDev Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/canardev/Sites/A4/IOS/CanarDev%20Project/CanarDev%20Project/MusicManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "1884">
-               </Location>
-               <Location
-                  uuid = "67B25770-9F9A-4798-A84A-17B9E2068F00 - 81cf8b6348901e5f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.String&gt;) -&gt; () in CanarDev_Project.MusicManager.saveTrack(currentTrack: CanarDev_Project.Track) -&gt; ()"
-                  moduleName = "CanarDev Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/canardev/Sites/A4/IOS/CanarDev%20Project/CanarDev%20Project/MusicManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "176">
-               </Location>
-               <Location
-                  uuid = "67B25770-9F9A-4798-A84A-17B9E2068F00 - b5369074dd33bc09"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CanarDev_Project.MusicManager.saveTrack(currentTrack: CanarDev_Project.Track) -&gt; ()"
-                  moduleName = "CanarDev Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/canardev/Sites/A4/IOS/CanarDev%20Project/CanarDev%20Project/MusicManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "2168">
                </Location>
             </Locations>
          </BreakpointContent>

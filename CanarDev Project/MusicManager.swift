@@ -11,7 +11,26 @@ import MediaPlayer
 
 class MusicManager: ObservableObject {
     @Published var tracks: [SaveTrack] = []
+    @Published var isSongChanged = false // Variable pour suivre le changement de chanson
     let musicPlayer = MPMusicPlayerController.systemMusicPlayer
+
+    
+    init() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleNowPlayingItemDidChange), name: .MPMusicPlayerControllerNowPlayingItemDidChange, object: musicPlayer)
+        musicPlayer.beginGeneratingPlaybackNotifications()
+    }
+    
+    @objc func handleNowPlayingItemDidChange() {
+        if let _ = musicPlayer.nowPlayingItem {
+            isSongChanged = true // Marquer que la chanson a changé
+        }
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .MPMusicPlayerControllerNowPlayingItemDidChange, object: musicPlayer)
+        musicPlayer.endGeneratingPlaybackNotifications()
+    }
+
     
     // Tracks manager -> crud
     func saveTrack(currentTrack : Track) {
@@ -26,34 +45,11 @@ class MusicManager: ObservableObject {
         
         let artworkName: String = String(tracks.count + 1)
         
-        var newTrack: SaveTrack = SaveTrack(title: currentTrack.title, artist: currentTrack.artist, artwork: saveArtwork(currentTrack.artwork, artworkName )!)
+        let newTrack: SaveTrack = SaveTrack(title: currentTrack.title, artist: currentTrack.artist, artwork: saveArtwork(currentTrack.artwork, artworkName )!)
         
+        tracks.append(newTrack)
         
         print(newTrack.links.count)
-        // Fetch all data after save and save it
-        getTrackSpotifyLink(title: currentTrack.title, artist: currentTrack.artist) { spotifyURL in
-            if let url = spotifyURL {
-                let country = "FR"
-            
-                self.getPostSongwhipData(track: newTrack, spotifyLink: url, country: country) { result in
-                    switch result {
-                    case .success(let json):
-                        // print("JSON response received:", json)
-                        self.appendTrackLinks(jsonResponse: json, newTrack: &newTrack, country: country)
-                        self.tracks.append(newTrack)
-                        print(self.tracks.first?.links)
-                        
-                    case .failure(let error):
-                        print("Error:", error.localizedDescription)
-                        // Handle the error here
-                    }
-                }
-            
-            } else {
-                print("Impossible de récupérer l'URL Spotify de la chanson.")
-                return
-            }
-        }
     }
     
     func removeTrack(withID id: UUID) {
@@ -123,7 +119,8 @@ class MusicManager: ObservableObject {
         task.resume()
     }
     
-    func appendTrackLinks(jsonResponse: [String: Any], newTrack: inout SaveTrack, country: String) {
+    func appendTrackLinksInArray(jsonResponse: [String: Any], country: String) -> [[String: String]] {
+        var array: [[String: String]] = []
         func formatiTunesLink(for link: String, with countryCode: String) -> String {
             return link.replacingOccurrences(of: "{country}", with: countryCode)
         }
@@ -140,9 +137,9 @@ class MusicManager: ObservableObject {
                                 switch platformName {
                                     case "Apple Music":
                                         let formattedLink = formatiTunesLink(for: link, with: countryCode)
-                                        newTrack.addLink(link: ["platform": platformName, "link": formattedLink])
+                                        array.append(["platform": platformName, "link": formattedLink])
                                     default:
-                                        newTrack.addLink(link: ["platform": platformName, "link": link])
+                                        array.append(["platform": platformName, "link": link])
                                 }
                             }
                         }
@@ -155,7 +152,9 @@ class MusicManager: ObservableObject {
            let item = data["item"] as? [String: Any],
            let links = item["links"] as? [String: Any] {
             traverseLinks(dictionary: links, countryCode: country)
+            return array
         }
+        return []
     }
     
     func identifyPlatform(from url: String) -> String {
